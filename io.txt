@@ -1,0 +1,54 @@
+input output 处理
+string of int 
+
+input: a="23 55 675 234 67867 12"
+output: b="24 56 676 235 67868 13"
+
+```python
+a="23 55 675 234 67867 12"
+aL = list(map(int,a.split()))
+x=[e+1 for e in aL]
+x=[str(e) for e in x]
+b=' '.join(x)
+```
+
+```c
+// fmemopen play 
+//  https://onecompiler.com/c/3yzav7d6m
+#include <stdio.h>
+char buffer[] = "link start";
+int main (void)
+{
+  int ch;
+  FILE *stream;
+
+  stream = fmemopen (buffer, strlen (buffer), "r");
+  while ((ch = fgetc (stream)) != EOF)
+    printf ("Got %c\n", ch);
+  fclose (stream);
+
+  return 0;
+}
+```
+
+```c
+#include <stdio.h>
+#include<string.h>
+int main (void){
+char a[] = "23 55 675 234 67867 12";
+int ch,ele;
+FILE *stream;
+
+stream = fmemopen (a, strlen (a), "r");
+char b[1000],c[12];
+strcpy (b,"");
+while ((ch = fscanf (stream,"%d",&ele)) != EOF){
+//itoa(ele,c,10);
+sprintf(c,"%d ",ele+1);
+strcat (b,c);
+}
+b[strlen(b)-1]='\0';
+printf("%s\n",b);
+fclose (stream);
+}
+```
